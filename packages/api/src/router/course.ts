@@ -1,15 +1,15 @@
 //grab the images for the corresponding user
-import { router, publicProcedure, protectedProcedure } from '../trpc'
-import { z } from 'zod'
+import { router, publicProcedure, protectedProcedure } from "../trpc";
+import { z } from "zod";
 
-export const entryRouter = router({
+export const courseRouter = router({
   all: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.entry.findMany()
+    return ctx.prisma.wp_posts.findMany();
   }),
   create: protectedProcedure
     .input(
       z.object({
-        entryDay: z.date(),
+        courseDay: z.date(),
         urlFrontPhotoThumbnail: z.string(),
         urlFrontPhotoHD: z.string(),
         urlBackPhotoThumbnail: z.string(),
@@ -17,10 +17,10 @@ export const entryRouter = router({
       })
     )
     .mutation(({ ctx, input }) => {
-      //create entry and link it to the user
-      return ctx.prisma.entry.create({
+      //create course and link it to the user
+      return ctx.prisma.course.create({
         data: {
-          entryDay: input.entryDay,
+          courseDay: input.courseDay,
           urlFrontPhotoThumbnail: input.urlFrontPhotoThumbnail,
           urlFrontPhotoHD: input.urlFrontPhotoHD,
           urlBackPhotoThumbnail: input.urlBackPhotoThumbnail,
@@ -31,6 +31,6 @@ export const entryRouter = router({
             },
           },
         },
-      })
+      });
     }),
-})
+});

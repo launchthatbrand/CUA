@@ -26,7 +26,7 @@ export function HomeScreen() {
     href: "/signup",
   });
 
-  const { data, isLoading, error } = trpc.entry.all.useQuery();
+  const { data, isLoading, error } = trpc.course.all.useQuery();
 
   useEffect(() => {
     console.log(data);
@@ -87,8 +87,8 @@ export function HomeScreen() {
       <YStack p="$2">
         <Paragraph>tRPC Query Demo</Paragraph>
         {data?.map((entry) => (
-          <Paragraph opacity={0.5} key={entry.id}>
-            {entry.id}
+          <Paragraph opacity={0.5} key={entry.guid}>
+            {entry.post_name}
           </Paragraph>
         ))}
       </YStack>
