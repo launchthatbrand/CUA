@@ -19,6 +19,9 @@ export function HomeScreen() {
   const userLinkProps = useLink({
     href: "/user/nate",
   });
+  const postLinkProps = useLink({
+    href: "/post/1",
+  });
   const signInLinkProps = useLink({
     href: "/signin",
   });
@@ -26,7 +29,7 @@ export function HomeScreen() {
     href: "/signup",
   });
 
-  const { data, isLoading, error } = trpc.course.all.useQuery();
+  const { data, isLoading, error } = trpc.post.all.useQuery();
 
   useEffect(() => {
     console.log(data);
@@ -96,6 +99,12 @@ export function HomeScreen() {
       <XStack space>
         <Button {...userLinkProps} theme={"gray"}>
           User Page(Routing)
+        </Button>
+      </XStack>
+
+      <XStack space>
+        <Button {...postLinkProps} theme={"gray"}>
+          Post Page(Routing)
         </Button>
       </XStack>
 
