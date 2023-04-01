@@ -12,10 +12,11 @@ type Parameters = {
 const { useParam } = createParam<Parameters>();
 
 export function PostDetailScreen() {
+  //TODO: vercel deployment failing because query param is not loading before trpc query
   const [id, setId] = useState(1);
   const linkProps = useLink({ href: "/" });
 
-  const intId = parseInt(id!);
+  // const intId = parseInt(id!);
 
   const { data, isLoading } = trpc.post.getById.useQuery({
     id,
