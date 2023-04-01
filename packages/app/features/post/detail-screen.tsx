@@ -16,13 +16,18 @@ export function PostDetailScreen() {
   const [id, setId] = useState(1);
   const linkProps = useLink({ href: "/" });
 
-  // const intId = parseInt(id!);
+  //const intId = parseInt(id!);
 
-  const { data, isLoading } = trpc.post.getById.useQuery({
+  const { data, isLoading, error } = trpc.post.getById.useQuery({
     id,
   });
-  if (isLoading) return <div>Loading...</div>;
-  if (!data) return <div>404</div>;
+  if (isLoading) {
+    return <Paragraph>Loading...</Paragraph>;
+  }
+
+  if (error) {
+    return <Paragraph>{error.message}</Paragraph>;
+  }
 
   return (
     <YStack f={1} jc="center" ai="center" space>
