@@ -1,6 +1,6 @@
 import { Button, Paragraph, YStack } from "@my/ui";
 import { ChevronLeft } from "@tamagui/lucide-icons";
-import React from "react";
+import { useState } from "react";
 import { createParam } from "solito";
 import { useLink } from "solito/link";
 import { trpc } from "../../utils/trpc";
@@ -12,13 +12,13 @@ type Parameters = {
 const { useParam } = createParam<Parameters>();
 
 export function PostDetailScreen() {
-  const [id, setId] = useParam("id");
+  const [id, setId] = useState(1);
   const linkProps = useLink({ href: "/" });
 
   const intId = parseInt(id!);
 
   const { data, isLoading } = trpc.post.getById.useQuery({
-    id: intId,
+    id,
   });
   if (isLoading) return <div>Loading...</div>;
   if (!data) return <div>404</div>;
