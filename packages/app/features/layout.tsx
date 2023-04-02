@@ -7,7 +7,7 @@ export const PageLayout = (props: PropsWithChildren) => {
       <XStack backgroundColor={"$green10Light"}>
         <YStack
           className={"left-nav"}
-          backgroundColor={"$green10Dark"}
+          backgroundColor={"$pink8Dark"}
           flexBasis="20%"
         >
           <YStack bc="$color" br="$3" p="$2" />
