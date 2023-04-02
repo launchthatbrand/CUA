@@ -1,26 +1,29 @@
 import { Button, Paragraph, YStack } from "@my/ui";
 import { ChevronLeft } from "@tamagui/lucide-icons";
-import { useState } from "react";
+import React from "react";
 import { createParam } from "solito";
 import { useLink } from "solito/link";
 import { trpc } from "../../utils/trpc";
 
 type Parameters = {
-  id: string | null;
+  id: number;
 };
 
 const { useParam } = createParam<Parameters>();
 
 export function PostDetailScreen() {
-  //TODO: vercel deployment failing because query param is not loading before trpc query
-  const [id, setId] = useState(1);
+  const [id, setId] = useParam("id", {
+    parse(value) {
+      return Number(value);
+    },
+    initial: 0,
+  });
   const linkProps = useLink({ href: "/" });
-
-  //const intId = parseInt(id!);
 
   const { data, isLoading, error } = trpc.post.getById.useQuery({
     id,
   });
+
   if (isLoading) {
     return <Paragraph>Loading...</Paragraph>;
   }
