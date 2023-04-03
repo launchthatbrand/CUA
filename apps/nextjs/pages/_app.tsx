@@ -6,13 +6,14 @@ import { NextThemeProvider, useRootTheme } from "@tamagui/next-theme";
 import { Provider } from "app/provider";
 import Head from "next/head";
 import React, { useMemo } from "react";
-import type { SolitoAppProps } from "solito";
+import { SolitoAppProps } from "solito";
 import "raf/polyfill";
 import { trpc } from "app/utils/trpc.web";
 import { Layouts } from "@my/ui/src/layouts";
+import { MyAppProps } from "app/types";
 
 function MyApp({ Component, pageProps }: SolitoAppProps) {
-  //const Layout = Component.getLayout || ((page) => page);
+  const getLayout = Component.getLayout ?? ((page) => page);
   return (
     <>
       <Head>
@@ -20,9 +21,7 @@ function MyApp({ Component, pageProps }: SolitoAppProps) {
         <meta name="description" content="Tamagui, Solito, Expo & Next.js" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ThemeProvider>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
     </>
   );
 }

@@ -45,95 +45,95 @@ export function HomeScreen() {
   }
 
   return (
-    <MainLayout>
-      <YStack f={1} jc="center" ai="center" p="$4" space>
-        <YStack space="$4" maw={600} px="$3">
-          <XStack jc="center" ai="flex-end" fw="wrap" space="$2" mt="$-2">
-            <Image
-              src="https://raw.githubusercontent.com/chen-rn/CUA/main/apps/nextjs/public/favicon.ico"
-              accessibilityLabel="create-universal-app logo"
-              width={50}
-              height={50}
-              mt="$2"
-            />
-            <H1 ta="center" mt="$2">
-              create-universal-app
-            </H1>
-          </XStack>
-          <Paragraph ta="center">
-            This is a demo for create-universal-app. To read more about the
-            philosophy behind it, visit{" "}
-            <Anchor
-              color="$color12"
-              href="https://github.com/chen-rn/create-universal-app"
-              target="_blank"
-            >
-              https://github.com/chen-rn/create-universal-app
-            </Anchor>{" "}
-            (give it a ⭐️ if you like it!)
-          </Paragraph>
-          <Paragraph ta="center">
-            This template uses Expo, Next, Solito, tRPC, Tamagui, Clerk, and
-            Prisma. If you're a beginner and is a little overwhelmed, I've also
-            made a{" "}
-            <Anchor
-              color="$color12"
-              href="https://youtu.be/aTEv0-ZBbWk"
-              target="_blank"
-            >
-              video
-            </Anchor>{" "}
-            explanation on how this template works and how to get started!
-          </Paragraph>
-          <Separator />
-        </YStack>
-
-        <H3 ta="center">Some Demos</H3>
-        <YStack p="$2">
-          <Paragraph>tRPC Query Demo</Paragraph>
-          {data?.map((entry) => (
-            <Paragraph opacity={0.5} key={entry.guid}>
-              {entry.post_name}
-            </Paragraph>
-          ))}
-        </YStack>
-
-        <XStack space>
-          <Button {...userLinkProps} theme={"gray"}>
-            User Page(Routing)
-          </Button>
+    <YStack f={1} jc="center" ai="center" p="$4" space>
+      <YStack space="$4" maw={600} px="$3">
+        <XStack jc="center" ai="flex-end" fw="wrap" space="$2" mt="$-2">
+          <Image
+            src="https://raw.githubusercontent.com/chen-rn/CUA/main/apps/nextjs/public/favicon.ico"
+            accessibilityLabel="create-universal-app logo"
+            width={50}
+            height={50}
+            mt="$2"
+          />
+          <H1 ta="center" mt="$2">
+            create-universal-app
+          </H1>
         </XStack>
-
-        <XStack space>
-          <Button {...postLinkProps} theme={"gray"}>
-            Post Page(Routing)
-          </Button>
-        </XStack>
-
-        <SignedOut>
-          <XStack space ai="center">
-            <Button {...signInLinkProps} theme={"gray"}>
-              Sign In(Clerk)
-            </Button>
-            <Button {...signUpLinkProps} theme={"gray"}>
-              Sign Up(Clerk)
-            </Button>
-          </XStack>
-        </SignedOut>
-
-        <SignedIn>
-          <Button
-            onPress={() => {
-              signOut();
-            }}
-            theme={"red"}
+        <Paragraph ta="center">
+          This is a demo for create-universal-app. To read more about the
+          philosophy behind it, visit{" "}
+          <Anchor
+            color="$color12"
+            href="https://github.com/chen-rn/create-universal-app"
+            target="_blank"
           >
-            Sign Out
-          </Button>
-        </SignedIn>
+            https://github.com/chen-rn/create-universal-app
+          </Anchor>{" "}
+          (give it a ⭐️ if you like it!)
+        </Paragraph>
+        <Paragraph ta="center">
+          This template uses Expo, Next, Solito, tRPC, Tamagui, Clerk, and
+          Prisma. If you're a beginner and is a little overwhelmed, I've also
+          made a{" "}
+          <Anchor
+            color="$color12"
+            href="https://youtu.be/aTEv0-ZBbWk"
+            target="_blank"
+          >
+            video
+          </Anchor>{" "}
+          explanation on how this template works and how to get started!
+        </Paragraph>
+        <Separator />
       </YStack>
-    </MainLayout>
+
+      <H3 ta="center">Some Demos</H3>
+      <YStack p="$2">
+        <Paragraph>tRPC Query Demo</Paragraph>
+        {data?.map((entry) => (
+          <Paragraph opacity={0.5} key={entry.guid}>
+            {entry.post_name}
+          </Paragraph>
+        ))}
+      </YStack>
+
+      <XStack space>
+        <Button {...userLinkProps} theme={"gray"}>
+          User Page(Routing)
+        </Button>
+      </XStack>
+
+      <XStack space>
+        <Button {...postLinkProps} theme={"gray"}>
+          Post Page(Routing)
+        </Button>
+      </XStack>
+
+      <SignedOut>
+        <XStack space ai="center">
+          <Button {...signInLinkProps} theme={"gray"}>
+            Sign In(Clerk)
+          </Button>
+          <Button {...signUpLinkProps} theme={"gray"}>
+            Sign Up(Clerk)
+          </Button>
+        </XStack>
+      </SignedOut>
+
+      <SignedIn>
+        <Button
+          onPress={() => {
+            signOut();
+          }}
+          theme={"red"}
+        >
+          Sign Out
+        </Button>
+      </SignedIn>
+    </YStack>
   );
 }
 
-// HomeScreen.Layout = MainLayout;
+HomeScreen.getLayout = function getLayout(page) {
+  return <MainLayout>{page}</MainLayout>;
+};
