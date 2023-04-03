@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import { XStack, YStack, ZStack } from "@my/ui";
+import { XStack, YStack, ZStack } from "../index";
 import Sidebar from "../components/Sidebar/Sidebar";
 import AdminNavbar from "../components/Navbars/AdminNavbar";
 
