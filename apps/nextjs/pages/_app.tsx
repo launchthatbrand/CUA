@@ -9,8 +9,10 @@ import React, { useMemo } from "react";
 import type { SolitoAppProps } from "solito";
 import "raf/polyfill";
 import { trpc } from "app/utils/trpc.web";
+import { Layouts } from "@my/ui/src/layouts";
 
 function MyApp({ Component, pageProps }: SolitoAppProps) {
+  //const Layout = Component.getLayout || ((page) => page);
   return (
     <>
       <Head>

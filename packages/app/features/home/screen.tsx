@@ -13,7 +13,7 @@ import React, { useEffect } from "react";
 import { useLink } from "solito/link";
 import { trpc } from "../../utils/trpc";
 import { SignedIn, SignedOut, useAuth } from "../../utils/clerk";
-import { PageLayout } from "../layout";
+import MainLayout from "@my/ui/src/layouts/MainLayout";
 
 export function HomeScreen() {
   const { signOut, userId } = useAuth();
@@ -45,7 +45,7 @@ export function HomeScreen() {
   }
 
   return (
-    <PageLayout>
+    <MainLayout>
       <YStack f={1} jc="center" ai="center" p="$4" space>
         <YStack space="$4" maw={600} px="$3">
           <XStack jc="center" ai="flex-end" fw="wrap" space="$2" mt="$-2">
@@ -132,6 +132,8 @@ export function HomeScreen() {
           </Button>
         </SignedIn>
       </YStack>
-    </PageLayout>
+    </MainLayout>
   );
 }
+
+// HomeScreen.Layout = MainLayout;

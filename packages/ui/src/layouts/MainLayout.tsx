@@ -3,7 +3,7 @@ import { XStack, YStack, ZStack } from "@my/ui";
 import Sidebar from "@my/ui/src/components/Sidebar/Sidebar";
 import AdminNavbar from "@my/ui/src/components/Navbars/AdminNavbar";
 
-export const PageLayout = (props: PropsWithChildren<unknown>) => {
+export const MainLayout = (props: PropsWithChildren<unknown>) => {
   return (
     <>
       <XStack backgroundColor={"$green10Light"}>
@@ -19,3 +19,4 @@ export const PageLayout = (props: PropsWithChildren<unknown>) => {
     </>
   );
 };
+export default MainLayout;
