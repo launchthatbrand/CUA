@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from "react";
 import { XStack, YStack, ZStack } from "@my/ui";
-import Sidebar from "@my/ui/src/components/Sidebar/Sidebar";
-import AdminNavbar from "@my/ui/src/components/Navbars/AdminNavbar";
+import Sidebar from "../components/Sidebar/Sidebar";
+import AdminNavbar from "../components/Navbars/AdminNavbar";
 
 export const MainLayout = (props: PropsWithChildren<unknown>) => {
   return (
